@@ -8,9 +8,36 @@
 import SwiftUI
 
 struct TabBarScreen: View {
+    
+    @State private var selection = 1
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView(selection: $selection) {
+            DashboardScreen()
+                .tabItem {
+                    VStack {
+                        Text("Main")
+                        Image(systemName: "star")
+                    }
+                }
+                .tag(0)
+            DeviceScreen()
+                .tabItem {
+                    VStack {
+                        Text("Device")
+                        Image(systemName: "tv.and.mediabox")
+                    }
+                }
+                .tag(1)
+            AboutScreen()
+                .tabItem {
+                    VStack {
+                        Text("About")
+                        Image(systemName: "graduationcap")
+                    }
+                }
+                .tag(2)
+        }
     }
 }
 
